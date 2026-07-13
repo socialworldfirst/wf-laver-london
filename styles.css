@@ -170,3 +170,30 @@ p.lead{max-width:54ch}
 .opt{display:inline-flex;align-items:center;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:5px 11px;border-radius:100px;background:#FFF3E8;color:#9A4B00;margin-left:10px;vertical-align:middle}
 .aplus-img{border-radius:18px;overflow:hidden;background:#0B1220}
 .aplus-img img{width:100%;display:block}
+
+/* ── v5: fit every slide in one viewport (slideshow mode) ── */
+.slide{padding:clamp(30px,4.5vh,60px) 8vw}
+.haspanel .slide{padding-left:calc(168px + 3vw);padding-right:7vw}
+.wrap{max-width:1040px}
+h1{font-size:clamp(32px,4.4vw,58px)}
+h2{font-size:clamp(24px,3.2vw,40px);margin-bottom:16px}
+.kicker{margin-bottom:13px;font-size:11px}
+p.lead{font-size:clamp(14.5px,1.25vw,17px);line-height:1.5;max-width:60ch}
+.dateline{font-size:clamp(15px,1.5vw,19px);margin:8px 0 2px}
+.card{padding:16px 20px}
+.card p,.card li{font-size:13.5px;line-height:1.5}
+.card li{margin-bottom:5px}
+.card ul{margin:6px 0 0 16px}
+h3{font-size:15px;margin-bottom:5px}
+.grid2{gap:18px}.grid3{gap:15px}
+.foot{margin-top:14px;font-size:11.5px;line-height:1.5}
+.tbl td{padding:7px 12px;font-size:13px}
+.tbl th{padding:7px 12px;font-size:10.5px}
+.tbl td:first-child{font-weight:700}
+.hero2{gap:24px}
+.hero2 > figure.pic{max-height:54vh}
+.hero2 > div figure.pic{max-height:26vh}
+.goal .big{font-size:26px;margin:4px 0 0}
+.goal .unit{font-size:11px}
+.chip{margin-bottom:9px}
+.dateline{margin-bottom:2px}
