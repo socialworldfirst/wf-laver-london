@@ -1,0 +1,4 @@
+existing/
+.playwright-mcp/
+*.jpg.tmp
+.DS_Store
