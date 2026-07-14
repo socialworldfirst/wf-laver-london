@@ -210,3 +210,18 @@ h3{font-size:15px;margin-bottom:5px}
 .datenav a.sub.on::before{background:var(--wf)}
 .datenav{gap:1px;padding:16px 0 16px 22px}
 .datenav a{padding:5px 10px 5px 14px}
+
+/* ── v7: number highlights, rights split, goals ── */
+.numhi{display:flex;align-items:baseline;gap:9px;margin-bottom:10px}
+.numhi .n{font-size:40px;font-weight:900;letter-spacing:-.02em;line-height:.85;color:var(--world)}
+.numhi .u{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--grey)}
+.dark .numhi .n{color:#FF8FA0}
+.goal.main{border:2px solid var(--wf);background:#FFF5F8}
+.dark .goal.main{background:#1c0e15;border-color:var(--wf)}
+.mainflag{font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--wf);margin-bottom:8px}
+.optchip{display:inline-flex;align-items:center;font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:3px 9px;border-radius:100px;background:#EDF0F4;color:#39414E;margin-left:10px}
+
+/* v7: tighten datenav for 18 entries */
+.datenav a{padding:3px 10px 3px 14px}
+.datenav .dd{line-height:1.1}
+.datenav a.sub{padding-top:3px;padding-bottom:3px}
