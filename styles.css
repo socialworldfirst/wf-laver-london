@@ -225,3 +225,23 @@ h3{font-size:15px;margin-bottom:5px}
 .datenav a{padding:3px 10px 3px 14px}
 .datenav .dd{line-height:1.1}
 .datenav a.sub{padding-top:3px;padding-bottom:3px}
+
+/* ── v8: nav redesign — timeline rail, clean hierarchy ── */
+.datenav{position:fixed;left:0;top:0;bottom:0;width:216px;display:flex;flex-direction:column;justify-content:center;gap:2px;padding:24px 8px 24px 0;z-index:70;overflow:hidden;background:transparent}
+.datenav::before{content:"";position:absolute;left:27px;top:50%;transform:translateY(-50%);height:calc(100% - 96px);width:1px;background:var(--line)}
+.datenav a{position:relative;display:block;padding:4px 6px 4px 46px;border-left:none;text-decoration:none;white-space:nowrap;line-height:1.25}
+.datenav a::after{content:"";position:absolute;left:23px;top:50%;transform:translateY(-50%);width:9px;height:9px;border-radius:50%;background:var(--paper);border:2px solid #CBD0D8;transition:.15s}
+.datenav a .dt{display:block;font-size:9.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#B9BFC9}
+.datenav .dd{display:block;font-size:12.5px;font-weight:700;letter-spacing:0;text-transform:none;color:#5B6472;overflow:hidden;text-overflow:ellipsis}
+.datenav a:hover .dd{color:var(--ink)}
+.datenav a.on::after{background:var(--wf);border-color:var(--wf)}
+.datenav a.on .dt{color:var(--wf)}
+.datenav a.on .dd{color:var(--wf)}
+/* nested sub-items */
+.datenav a.sub{padding:2px 6px 2px 62px}
+.datenav a.sub::after{left:25px;width:5px;height:5px;border-width:1.5px;border-color:#D8DCE2}
+.datenav a.sub::before{content:"";position:absolute;left:32px;top:50%;width:14px;height:1px;background:var(--line)}
+.datenav a.sub .dd,.datenav a.sub{font-size:11px;font-weight:600;color:#9AA1AC;letter-spacing:.01em;text-transform:none}
+.datenav a.sub.on{color:var(--wf)}
+.datenav a.sub.on::after{background:var(--wf);border-color:var(--wf)}
+@media(max-width:1180px){.datenav{display:none}body.haspanel .slide{padding-left:7vw}}
