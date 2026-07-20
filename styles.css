@@ -247,17 +247,9 @@ h3{font-size:15px;margin-bottom:5px}
 .roomtile h3{font-size:14px;margin-bottom:4px;line-height:1.15}
 .roomtile p{font-size:12px;line-height:1.45;color:var(--grey)}
 @media(max-width:1180px){.roomgrid{grid-template-columns:repeat(2,1fr)}}
-/* ── v10: nav rail carries 26 entries — tighten, and never clip ── */
+/* ── v10: rail scrolls, scrollbar hidden ── */
 .datenav{gap:0;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none}
 .datenav::-webkit-scrollbar{display:none}
-.datenav a{padding:1px 6px 1px 44px;line-height:1.12}
-.datenav a .dt{font-size:8.5px;letter-spacing:.12em;line-height:1.05}
-.datenav .dd{font-size:11.5px;line-height:1.2}
-.datenav a.sub{padding:1px 6px 1px 58px}
-.datenav a.sub .dd,.datenav a.sub{font-size:10.5px}
-.datenav a::after{width:8px;height:8px}
-.datenav a.sub::after{left:26px;width:4.5px;height:4.5px}
-.datenav a.sub::before{left:32px;width:12px}
 
 /* source-document tables: keep their own ratio, reserve space, never collapse */
 figure.pic img[width]{height:auto;max-height:56vh;width:auto;max-width:100%;margin:0 auto;display:block;object-fit:contain}
@@ -304,3 +296,34 @@ figure.pic img,.aplus-img img,.roomtile img{cursor:zoom-in}
 .lightbox img{max-width:100%;max-height:100%;border-radius:10px;box-shadow:0 30px 90px rgba(0,0,0,.6)}
 .lightbox .lx-close{position:absolute;top:20px;right:26px;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#fff;background:transparent;border:2px solid rgba(255,255,255,.4);border-radius:100px;padding:9px 18px;cursor:pointer}
 .lightbox .lx-close:hover{background:#fff;color:var(--ink)}
+
+/* ── v11: clustered, foldable rail — closed by default, accordion ── */
+.datenav{justify-content:center}
+.cl{position:relative}
+.datenav .cl-head{position:relative;display:flex;align-items:center;gap:7px;width:100%;background:none;border:0;padding:7px 8px 7px 44px;cursor:pointer;text-align:left;font-family:inherit;color:inherit;text-decoration:none}
+.datenav .cl-head::after{content:"";position:absolute;left:23px;top:50%;transform:translateY(-50%);width:9px;height:9px;border-radius:50%;background:var(--paper);border:2px solid #CBD0D8;transition:.15s}
+.cl-txt{display:block;min-width:0;flex:1;text-transform:none;letter-spacing:0}
+.cl-dt{display:block;font-size:8.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#B9BFC9;line-height:1.05}
+.cl-name{display:block;font-size:12.5px;font-weight:800;letter-spacing:0;color:#39414E;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cl-cur{display:block;font-size:9.5px;font-weight:600;color:#9AA1AC;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px}
+.datenav .cl.open .cl-cur{display:none}
+.cl-n{font-size:9.5px;font-weight:800;color:#C5CAD3;flex:0 0 auto}
+.datenav .cl.open .cl-n{display:none}
+.chev{flex:0 0 7px;width:7px;height:7px;border-right:1.5px solid #C5CAD3;border-bottom:1.5px solid #C5CAD3;transform:rotate(-45deg);transition:transform .2s;margin-right:2px}
+.datenav .cl.open .chev{transform:rotate(45deg)}
+.datenav .cl-head:hover .cl-name{color:var(--ink)}
+.datenav .cl-head:hover .chev{border-color:#8B93A1}
+.datenav .cl.active .cl-name{color:var(--wf)}
+.datenav .cl.active .cl-dt{color:var(--wf)}
+.datenav .cl.active .cl-head::after{background:var(--wf);border-color:var(--wf)}
+.datenav .cl-body{display:none}
+.datenav .cl.open .cl-body{display:block;padding-bottom:5px}
+/* entries inside a cluster read as sub-items */
+.datenav .cl-body a{position:relative;display:block;padding:2px 6px 2px 62px;text-decoration:none;white-space:nowrap;line-height:1.25}
+.datenav .cl-body a::after{content:"";position:absolute;left:26px;top:50%;transform:translateY(-50%);width:4.5px;height:4.5px;border-radius:50%;background:var(--paper);border:1.5px solid #D8DCE2}
+.datenav .cl-body a::before{content:"";position:absolute;left:32px;top:50%;width:12px;height:1px;background:var(--line)}
+.datenav .cl-body a .dd{font-size:10.5px;font-weight:600;color:#9AA1AC;letter-spacing:.01em;line-height:1.25;overflow:hidden;text-overflow:ellipsis}
+.datenav .cl-body a:hover .dd{color:var(--ink)}
+.datenav .cl-body a.on .dd{color:var(--wf);font-weight:800}
+.datenav .cl-body a.on::after{background:var(--wf);border-color:var(--wf)}
+.datenav .cl.solo .cl-head{cursor:pointer}
