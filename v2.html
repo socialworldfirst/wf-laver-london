@@ -848,22 +848,16 @@
 const slides=[...document.querySelectorAll('.slide')];
 const links=[...document.querySelectorAll('#datenav a')];
 const clusters=[...document.querySelectorAll('#datenav .cl')];
-// folded by default; one open at a time
+// a cluster is unfolded only while you are inside it — its head takes you there
 clusters.forEach(cl=>{
   if(cl.classList.contains('solo')) return;
   cl.querySelector('.cl-head').addEventListener('click',e=>{
     e.preventDefault();
-    const wasOpen=cl.classList.contains('open');
-    clusters.forEach(c=>c.classList.remove('open'));
-    if(!wasOpen) cl.classList.add('open');
-    sync();
+    const first=cl.querySelector('.cl-body a');
+    const t=first&&document.querySelector(first.getAttribute('href'));
+    if(t) t.scrollIntoView({behavior:'smooth'});
   });
 });
-// clicking a page inside a cluster keeps that cluster open
-links.forEach(a=>a.addEventListener('click',()=>{
-  const cl=a.closest('.cl');
-  if(cl&&!cl.classList.contains('solo')){clusters.forEach(c=>c.classList.remove('open'));cl.classList.add('open');}
-}));
 function sync(){
   const y=window.scrollY+innerHeight/2;
   let idx=0;
@@ -874,6 +868,7 @@ function sync(){
   clusters.forEach(c=>{
     const here=c===actCl;
     c.classList.toggle('active',here);
+    c.classList.toggle('open',here&&!c.classList.contains('solo'));
     const cur=c.querySelector('.cl-cur');
     if(cur) cur.textContent = here && !c.classList.contains('solo') ? (act.textContent||'').trim() : '';
   });
